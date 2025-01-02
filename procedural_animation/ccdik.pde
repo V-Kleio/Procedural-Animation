@@ -1,9 +1,9 @@
 class CCDIK extends Algorithm {
   int numJoints;
-  float[] jointAngles;  // Joint angles (in radians)
-  PVector[] jointPositions;  // Positions of the joints
-  float[] lengths;  // Lengths of the segments
-  PVector target;  // Target position (mouse position)
+  float[] jointAngles;
+  PVector[] jointPositions;
+  float[] lengths;  
+  PVector target;  // mouse position
   
   void init() {
     numJoints = 5;
@@ -12,7 +12,7 @@ class CCDIK extends Algorithm {
     lengths = new float[numJoints - 1];
     target = new PVector(mouseX, mouseY);
     
-    // Initialize joint positions (start from the origin)
+    // Set joint positions (start from the origin)
     jointPositions[0] = new PVector(width / 2, height / 2);
     for (int i = 1; i < numJoints; i++) {
       lengths[i - 1] = 100;  // Set segment lengths
