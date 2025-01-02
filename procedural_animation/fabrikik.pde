@@ -1,9 +1,9 @@
 class FABRIKIK extends Algorithm {
   int numJoints;
-  PVector[] jointPositions;  // Positions of the joints
-  float[] lengths;  // Lengths of each segment
-  PVector target;  // Target position (mouse position)
-  PVector origin;  // Origin position
+  PVector[] jointPositions;
+  float[] lengths;
+  PVector target;  // mouse position
+  PVector origin;
   
   void init() {
     numJoints = 5;
@@ -11,10 +11,8 @@ class FABRIKIK extends Algorithm {
     lengths = new float[numJoints - 1];
     target = new PVector(mouseX, mouseY);
     
-    // Initialize origin
     origin = new PVector(width / 2, height / 2);
     
-    // Initialize joint positions and segment lengths
     jointPositions[0] = origin.copy();
     for (int i = 1; i < numJoints; i++) {
       lengths[i - 1] = 100;  // All segments are 100 units long
