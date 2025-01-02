@@ -18,6 +18,7 @@ class DistanceConstraint extends Algorithm {
   }
 
   void update() {
+    // Constraint the distance of ith joint to the i-1th joint
     for (int i = 1; i < jointCount; i++) {
       PVector current = joints.get(i);
       PVector prev = joints.get(i - 1);
