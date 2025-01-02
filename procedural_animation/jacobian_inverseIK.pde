@@ -1,9 +1,9 @@
 class JacobianInverseIK extends Algorithm {
-  int numJoints;
-  float[] jointAngles;  // Joint angles (in radians)
-  PVector[] jointPositions;  // Positions of the joints
-  PVector target;  // Target position (mouse position)
-  float[] lengths;  // Lengths of the segments
+  int numJoints; // Number of joints
+  float[] jointAngles;
+  PVector[] jointPositions;
+  PVector target;  // mouse position
+  float[] lengths;
   
   void init() {
     numJoints = 5;
@@ -51,7 +51,7 @@ class JacobianInverseIK extends Algorithm {
       // Calculate the error vector
       PVector error = PVector.sub(target, endEffector);
       if (error.mag() < epsilon) {
-        break;  // Exit if the error is small enough
+        break;
       }
       
       // Calculate the Jacobian matrix
@@ -123,7 +123,7 @@ class JacobianInverseIK extends Algorithm {
       ellipse(joint.x, joint.y, 25, 25);
     }
     
-    // Draw the target
+    // Draw target
     fill(255, 85, 85);
     ellipse(target.x, target.y, 30, 30);
   }
