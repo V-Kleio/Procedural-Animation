@@ -13,7 +13,8 @@ String[] algorithmNames = {
 
 void setup() {
   fullScreen();
-  
+
+  // Create all algorithm class and store it in an array
   algorithms = new Algorithm[NUM_ALGORITHMS];
   
   algorithms[0] = new DistanceConstraint();
@@ -22,8 +23,9 @@ void setup() {
   algorithms[3] = new JacobianInverseIK();
   algorithms[4] = new FABRIKIK();
   
-  // Initialize the current algorithm
   algorithms[currentAlgorithm].init();
+
+  // Setting for title
   PFont jetbrain;
   
   jetbrain = createFont("JetBrainsMono-Bold.ttf", 128);
@@ -39,13 +41,13 @@ void draw() {
   algorithms[currentAlgorithm].update();
   algorithms[currentAlgorithm].display();
   
-  // Display the algorithm name at the top-middle
+  // Update the title
   fill(248, 248, 242);
   text(algorithmNames[currentAlgorithm], width / 2, 100);
 }
 
 void mousePressed() {
-  // Cycle to the next algorithm on mouse click
+  // Mouse click to change algorithm
   currentAlgorithm = (currentAlgorithm + 1) % NUM_ALGORITHMS;
   algorithms[currentAlgorithm].init();
 }
