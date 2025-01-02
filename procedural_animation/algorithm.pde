@@ -1,5 +1,3 @@
-// Algorithm.pde
-
 abstract class Algorithm {
   // Initialize the algorithm
   abstract void init();
