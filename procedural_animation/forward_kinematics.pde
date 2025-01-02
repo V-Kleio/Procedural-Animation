@@ -20,13 +20,13 @@ class ForwardKinematics extends Algorithm {
     
     origin = new PVector(width / 2, height / 2);
     
-    // Initialize initial angles
+    // Set initial angles
     initialAngles.add(0f);
     initialAngles.add(1.3f);
     initialAngles.add(1f);
     initialAngles.add(0f);
     
-    // Initialize points and lengths
+    // Set points and lengths
     points.add(origin.copy());
     maxPoints = 4;
     segmentSize = 100;
@@ -58,14 +58,16 @@ class ForwardKinematics extends Algorithm {
   
   void update() {
     angles.set(0, simplifyAngle(initAngle));
-    
+
+    // Calculate cumulative angle for each previous joints
     for (int i = 1; i < maxPoints; i++) {
       float parentAngle = angles.get(i - 1);
       float relativeAngle = initialAngles.get(i);
       float totalAngle = simplifyAngle(parentAngle + relativeAngle);
       angles.set(i, totalAngle);
     }
-    
+
+    // Calculate position of joints based on the angles
     for (int i = 1; i < maxPoints; i++) {
       float currentAngle = angles.get(i - 1);
       PVector parentPoint = points.get(i - 1);
